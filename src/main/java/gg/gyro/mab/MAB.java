@@ -16,7 +16,8 @@ public final class MAB extends JavaPlugin {
         this.instance = this;
 
         this.handler.register(
-                new GamemodeCommand()
+                new GamemodeCommand(),
+                new WikiCommand()
         );
 
         System.out.println("Plugin enabled");
