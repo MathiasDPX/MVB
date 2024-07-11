@@ -1,6 +1,7 @@
 name: MAB
 version: '${version}'
+api-version: '1.20'
 main: gg.gyro.mab.MAB
-api-version: '1.21'
 authors: [Gyro3630]
+prefix: "MAB"
 description: Make Anything Better
