@@ -7,15 +7,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class MAB extends JavaPlugin {
 
-    private BukkitCommandHandler handler;
-    private static MAB instance;
-
     @Override
     public void onEnable() {
-        this.handler = BukkitCommandHandler.create(this);
-        this.instance = this;
+        BukkitCommandHandler handler = BukkitCommandHandler.create(this);
 
-        this.handler.register(
+        handler.register(
                 new GamemodeCommand(),
                 new WikiCommand()
         );
@@ -26,9 +22,5 @@ public final class MAB extends JavaPlugin {
     @Override
     public void onDisable() {
         System.out.println("Plugin disabled");
-    }
-
-    public static MAB getInstance(){
-        return instance;
     }
 }
