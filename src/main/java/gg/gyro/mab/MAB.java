@@ -15,13 +15,15 @@ import java.sql.SQLException;
 public final class MAB extends JavaPlugin {
     Database db = new Database(this);
     Lists lists = new Lists();
+    BukkitCommandHandler handler;
 
     @Override
     public void onEnable() {
         saveDefaultConfig();
 
         /* UTILS */
-        BukkitCommandHandler handler = BukkitCommandHandler.create(this);
+        handler = BukkitCommandHandler.create(this);
+
         db.connect();
         db.initialize();
 
@@ -61,6 +63,10 @@ public final class MAB extends JavaPlugin {
     }
 
     public Lists getLists() {
-        return lists;
+        return this.lists;
+    }
+
+    public BukkitCommandHandler getCommandHandler() {
+        return this.handler;
     }
 }
