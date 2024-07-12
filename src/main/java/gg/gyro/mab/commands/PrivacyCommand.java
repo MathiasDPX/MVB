@@ -27,6 +27,7 @@ public class PrivacyCommand {
     @Subcommand("get")
     @AutoComplete("@privacy_scopes")
     @Description("Show privacy settings")
+    @Usage("/privacy get [scope]")
     public void get(CommandSender sender, @Optional() String scope) {
         if (!(sender instanceof Player)) { return; }
         Player player = (Player) sender;
@@ -70,6 +71,7 @@ public class PrivacyCommand {
     @Subcommand("set")
     @AutoComplete("@privacy_scopes")
     @Description("Change privacy setting")
+    @Usage("/privacy set <scope> <value>")
     public void set(CommandSender sender, @Named("scope") String key, @Named("state") boolean value) {
         if (!(sender instanceof Player)) { return; }
         Player player = (Player) sender;
@@ -93,6 +95,7 @@ public class PrivacyCommand {
 
     @Subcommand("reset")
     @Description("Reset every player's privacy settings")
+    @Usage("/privacy reset")
     public void reset(CommandSender sender, @Optional() String confirmation) {
         if (!(sender instanceof Player)) { return;}
         Player player = (Player) sender;
@@ -113,6 +116,7 @@ public class PrivacyCommand {
     @Subcommand("remove")
     @AutoComplete("@privacy_scopes")
     @Description("Remove a scope")
+    @Usage("/privacy remove <scope>")
     public void remove(CommandSender sender, @Named("scope") String scope) {
         if (!(sender instanceof Player)) { return; }
         Player player = (Player) sender;
