@@ -1,9 +1,8 @@
 package gg.gyro.mab.utils;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.Set;
 
 public class Lists {
-    public List<String> privacy_scopes = Arrays.asList("ping", "pm");
-    public List<String> gamemodes = Arrays.asList("creative", "survival", "adventure", "spectator");
+    public Set<String> privacy_scopes = Set.of("ping", "pm");
+    public Set<String> gamemodes = Set.of("creative", "survival", "adventure", "spectator");
 }
