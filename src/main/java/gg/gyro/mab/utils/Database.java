@@ -46,6 +46,14 @@ public class Database {
         }
     }
 
+    public void initialize(){
+        try {
+            connection.prepareStatement("CREATE TABLE IF NOT EXISTS privacy (player VARCHAR(36) NOT NULL, scope VARCHAR(32) NOT NULL, state BOOLEAN DEFAULT 1)").executeUpdate();
+        } catch (SQLException e) {
+            plugin.getLogger().severe("Error while initializing Database");
+        }
+    }
+
     public Connection getConnection() throws SQLException {
         if (this.connection != null) {
             if (!this.connection.isClosed()) {

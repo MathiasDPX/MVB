@@ -19,6 +19,7 @@ public final class MAB extends JavaPlugin {
         /* UTILS */
         BukkitCommandHandler handler = BukkitCommandHandler.create(this);
         db.connect();
+        db.initialize();
 
         /* COMMANDS */
         handler.register(
