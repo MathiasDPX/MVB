@@ -29,8 +29,7 @@ public class PrivacyCommand {
     @Description("Show privacy settings")
     @Usage("/privacy get [scope]")
     public void get(CommandSender sender, @Optional() String scope) {
-        if (!(sender instanceof Player)) { return; }
-        Player player = (Player) sender;
+        if (!(sender instanceof Player player)) { return; }
 
         if (scope != null) {
             if (!(lists.privacy_scopes.contains(scope))) {
@@ -39,9 +38,9 @@ public class PrivacyCommand {
             }
             boolean value = this.privacy.getScope(player, scope);
             if (value) {
-                player.sendMessage(scope+": "+ ChatColor.GREEN + value);
+                player.sendMessage(scope+": "+ ChatColor.GREEN +"allowed");
             } else {
-                player.sendMessage(scope+": "+ ChatColor.RED + value);
+                player.sendMessage(scope+": "+ ChatColor.RED + "denied");
             }
             return;
         }
@@ -54,16 +53,16 @@ public class PrivacyCommand {
         }
 
         if (settings.isEmpty()){
-            player.sendMessage("You havent change your privacy settings");
+            player.sendMessage("You haven't change your privacy settings");
             return;
         }
 
         player.sendMessage("Your "+ChatColor.ITALIC+"changed"+ChatColor.RESET+" privacy settings:");
         for (String key : settings.keySet()) {
             if (settings.get(key)) {
-                player.sendMessage(key+": "+ ChatColor.GREEN + settings.get(key));
+                player.sendMessage(key+": "+ ChatColor.GREEN + "allowed");
             } else {
-                player.sendMessage(key+": "+ ChatColor.RED + settings.get(key));
+                player.sendMessage(key+": "+ ChatColor.RED + "denied");
             }
         }
     }
@@ -73,8 +72,7 @@ public class PrivacyCommand {
     @Description("Change privacy setting")
     @Usage("/privacy set <scope> <value>")
     public void set(CommandSender sender, @Named("scope") String key, @Named("state") boolean value) {
-        if (!(sender instanceof Player)) { return; }
-        Player player = (Player) sender;
+        if (!(sender instanceof Player player)) { return; }
 
         if (!(lists.privacy_scopes.contains(key))) {
             player.sendMessage(ChatColor.RED+"Invalid scope");
@@ -97,8 +95,7 @@ public class PrivacyCommand {
     @Description("Reset every player's privacy settings")
     @Usage("/privacy reset")
     public void reset(CommandSender sender, @Optional() String confirmation) {
-        if (!(sender instanceof Player)) { return;}
-        Player player = (Player) sender;
+        if (!(sender instanceof Player player)) { return;}
 
         if (Objects.equals(confirmation, "confirm")) {
             boolean success = this.privacy.removePlayer(player);
@@ -118,8 +115,7 @@ public class PrivacyCommand {
     @Description("Remove a scope")
     @Usage("/privacy remove <scope>")
     public void remove(CommandSender sender, @Named("scope") String scope) {
-        if (!(sender instanceof Player)) { return; }
-        Player player = (Player) sender;
+        if (!(sender instanceof Player player)) { return; }
 
         boolean success = this.privacy.removeScope(player, scope);
         if (success) {
