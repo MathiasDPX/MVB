@@ -28,12 +28,8 @@ public final class MAB extends JavaPlugin {
         db.initialize();
 
         /* COMMANDS */
-        handler.getAutoCompleter().registerSuggestion("privacy_scopes", (args, sender, command) -> {
-            return lists.privacy_scopes;
-        });
-        handler.getAutoCompleter().registerSuggestion("gamemodes", (args, sender, command) -> {
-            return lists.gamemodes;
-        });
+        handler.getAutoCompleter().registerSuggestion("privacy_scopes", (args, sender, command) -> lists.privacy_scopes);
+        handler.getAutoCompleter().registerSuggestion("gamemodes", (args, sender, command) -> lists.gamemodes);
 
         handler.register(
                 new GamemodeCommand(),
@@ -42,7 +38,7 @@ public final class MAB extends JavaPlugin {
         );
 
         /* LISTENERS */
-        getServer().getPluginManager().registerEvents(new PingPlayer(), this);
+        getServer().getPluginManager().registerEvents(new PingPlayer(this), this);
 
         System.out.println("Plugin enabled");
     }
