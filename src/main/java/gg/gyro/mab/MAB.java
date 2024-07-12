@@ -8,6 +8,7 @@ import revxrsal.commands.bukkit.BukkitCommandHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Arrays;
 
 public final class MAB extends JavaPlugin {
     Database db = new Database(this);
@@ -22,6 +23,13 @@ public final class MAB extends JavaPlugin {
         db.initialize();
 
         /* COMMANDS */
+        handler.getAutoCompleter().registerSuggestion("privacy_scope", (args, sender, command) -> {
+            return Arrays.asList("ping", "mp");
+        });
+        handler.getAutoCompleter().registerSuggestion("gamemodes", (args, sender, command) -> {
+            return Arrays.asList("creative", "survival", "adventure", "spectator");
+        });
+
         handler.register(
                 new GamemodeCommand(),
                 new WikiCommand(),
