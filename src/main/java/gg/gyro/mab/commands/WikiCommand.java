@@ -17,12 +17,12 @@ public class WikiCommand {
             String itemName = heldItem.getType().name();
             String link = "https://minecraft.wiki/w/"+itemName.toLowerCase();
             BaseComponent[] component =
-                    new ComponentBuilder("Page du wiki de "+ChatColor.YELLOW+itemName)
+                    new ComponentBuilder("Page of "+ChatColor.YELLOW+itemName)
                             .event(new ClickEvent(ClickEvent.Action.OPEN_URL, link))
                             .create();
             player.spigot().sendMessage(component);
         } else {
-            player.sendMessage(ChatColor.RED+"Vous devez tenir un item en main."+ChatColor.RESET);
+            player.sendMessage(ChatColor.RED+"You need to hold an item in your hand."+ChatColor.RESET);
         }
     }
 }
