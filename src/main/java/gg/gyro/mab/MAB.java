@@ -24,7 +24,8 @@ public final class MAB extends JavaPlugin {
         /* COMMANDS */
         handler.register(
                 new GamemodeCommand(),
-                new WikiCommand()
+                new WikiCommand(),
+                new PrivacyCommand(this)
         );
 
         /* LISTENERS */
@@ -39,7 +40,12 @@ public final class MAB extends JavaPlugin {
         System.out.println("Plugin disabled");
     }
 
-    public Connection getConnection() throws SQLException {
-        return db.getConnection();
+    public Connection getConnection() {
+        try {
+            return db.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
