@@ -2,42 +2,35 @@ package gg.gyro.mab.commands;
 
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import revxrsal.commands.annotation.*;
 import revxrsal.commands.bukkit.annotation.CommandPermission;
+import revxrsal.commands.command.CommandActor;
 
-@Command({"gm", "gamemode"})
-@AutoComplete("@gamemode *")
+import java.util.Arrays;
+
 public class GamemodeCommand {
-    @Subcommand("survival")
-    @Description("Survival")
+    @Command({"gamemode", "gm"})
+    @AutoComplete("@gamemodes")
     @CommandPermission("gyro.commands.gamemode")
-    public void survival(Player player, @Named("target") @Default("self") Player target) {
-        player.setGameMode(GameMode.SURVIVAL);
-        player.sendMessage("Change "+ ChatColor.RED+target.getName()+ChatColor.RESET+" gamemode to "+ChatColor.GOLD+"survival");
-    }
+    public void onCommand(CommandActor actor, @Named("gamemode") String gamemodes, @Optional @Default("me") Player player) {
+        String mode = gamemodes.toLowerCase();
 
-    @Subcommand("creative")
-    @Description("Creative")
-    @CommandPermission("gyro.commands.gamemode")
-    public void creative(Player player, @Named("target") @Default("self") Player target) {
-        player.setGameMode(GameMode.CREATIVE);
-        player.sendMessage("Change "+ ChatColor.RED+target.getName()+ChatColor.RESET+" gamemode to "+ChatColor.GOLD+"creative");
-    }
-
-    @Subcommand("adventure")
-    @Description("Adventure")
-    @CommandPermission("gyro.commands.gamemode")
-    public void adventure(Player player, @Named("target") @Default("self") Player target) {
-        player.setGameMode(GameMode.ADVENTURE);
-        player.sendMessage("Change "+ ChatColor.RED+target.getName()+ChatColor.RESET+" gamemode to "+ChatColor.GOLD+"adventure");
-    }
-
-    @Subcommand("spectator")
-    @Description("Spectator")
-    @CommandPermission("gyro.commands.gamemode")
-    public void spectator(Player player, @Named("target") @Default("self") Player target) {
-        player.setGameMode(GameMode.SPECTATOR);
-        player.sendMessage("Change "+ ChatColor.RED+target.getName()+ChatColor.RESET+" gamemode to "+ChatColor.GOLD+"spectator");
+        if (Arrays.asList("creative", "1", "c").contains(mode)) {
+            player.setGameMode(GameMode.CREATIVE);
+            player.sendMessage("Change "+ ChatColor.RED+player.getName()+ChatColor.RESET+" gamemode to "+ChatColor.GOLD+"creative");
+        } else if (Arrays.asList("adventure", "2", "a").contains(mode)) {
+            player.setGameMode(GameMode.ADVENTURE);
+            player.sendMessage("Change "+ ChatColor.RED+player.getName()+ChatColor.RESET+" gamemode to "+ChatColor.GOLD+"adventure");
+        } else if (Arrays.asList("spectator", "3", "sp").contains(mode)) {
+            player.setGameMode(GameMode.SPECTATOR);
+            player.sendMessage("Change "+ ChatColor.RED+player.getName()+ChatColor.RESET+" gamemode to "+ChatColor.GOLD+"spectator");
+        } else if (Arrays.asList("survival", "0", "s").contains(mode)) {
+            player.setGameMode(GameMode.SURVIVAL);
+            player.sendMessage("Change "+ ChatColor.RED+player.getName()+ChatColor.RESET+" gamemode to "+ChatColor.GOLD+"survival");
+        } else {
+            player.sendMessage(ChatColor.RED+"Unknown gamemode "+mode);
+        }
     }
 }
