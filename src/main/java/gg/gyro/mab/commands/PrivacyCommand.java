@@ -24,6 +24,15 @@ public class PrivacyCommand {
         this.lists = plugin.getLists();
     }
 
+    private String getDescription(String scope){
+        return switch (scope) {
+            case "ping" -> "Play sound when you got mention in chat";
+            case "pm" -> "Allow people to send you private messages";
+            case "response" -> "Allow people to respond to your private messages";
+            default -> "No description found";
+        };
+    }
+
     @Subcommand("get")
     @AutoComplete("@privacy_scopes")
     @Description("Show privacy settings")
@@ -123,5 +132,20 @@ public class PrivacyCommand {
         } else {
             player.sendMessage(ChatColor.DARK_RED+"Unable to remove "+scope+" from privacy settings");
         }
+    }
+
+    @Subcommand("info")
+    @AutoComplete("@privacy_scopes")
+    @Description("Get info about privacy scopes")
+    @Usage("/privacy info <scope>")
+    public void info(CommandSender sender, @Named("scope") String scope) {
+        if (!(sender instanceof Player player)) { return; }
+
+        if (!(lists.privacy_scopes.contains(scope))) {
+            player.sendMessage(ChatColor.RED+"Invalid scope");
+            return;
+        }
+
+        player.sendMessage(scope+": "+getDescription(scope));
     }
 }
