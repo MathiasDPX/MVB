@@ -41,6 +41,7 @@ public final class MAB extends JavaPlugin {
 
         /* LISTENERS */
         getServer().getPluginManager().registerEvents(new PingPlayer(this), this);
+        getServer().getPluginManager().registerEvents(new Insomnia(this), this);
 
         System.out.println("Plugin enabled");
     }
