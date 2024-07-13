@@ -5,3 +5,14 @@ database:
 insomnia:
   enabled: true
   chance: 0.1
+utility:
+  anvil: true
+  brewing_stand: true
+  cartography_table: true
+  craft: true
+  ender_chest: true
+  grindstone: true
+  loom: true
+  smithing_table: true
+  stonecutter: true
+  enchantment_table: true

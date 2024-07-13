@@ -27,6 +27,10 @@ public final class MAB extends JavaPlugin {
         db.connect();
         db.initialize();
 
+        for (String block : lists.utility_blocks) {
+            lists.config_parameters.add("utility"+block);
+        }
+
         /* COMMANDS */
         handler.getAutoCompleter().registerSuggestion("privacy_scopes", (args, sender, command) -> lists.privacy_scopes);
         handler.getAutoCompleter().registerSuggestion("gamemodes", (args, sender, command) -> lists.gamemodes);
@@ -37,7 +41,8 @@ public final class MAB extends JavaPlugin {
                 new WikiCommand(),
                 new PrivacyCommand(this),
                 new ConfigCommand(this),
-                new PrivateMessageCommands(this)
+                new PrivateMessageCommands(this),
+                new UtilityCommand(this)
         );
 
         /* LISTENERS */
