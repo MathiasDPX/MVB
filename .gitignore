@@ -1,6 +1,5 @@
 # User-specific stuff
 .idea/
-src/main/resources/config.yml
 
 *.iml
 *.ipr
