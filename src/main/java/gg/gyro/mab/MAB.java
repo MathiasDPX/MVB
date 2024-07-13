@@ -42,7 +42,8 @@ public final class MAB extends JavaPlugin {
                 new PrivacyCommand(this),
                 new ConfigCommand(this),
                 new PrivateMessageCommands(this),
-                new UtilityCommand(this)
+                new UtilityCommand(this),
+                new PartyCommand()
         );
 
         /* LISTENERS */

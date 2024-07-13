@@ -29,6 +29,7 @@ public class PrivacyCommand {
             case "ping" -> "Play sound when you got mention in chat";
             case "pm" -> "Allow people to send you private messages";
             case "response" -> "Allow people to respond to your private messages";
+            case "pinvites" -> "Allow people to invite you to their party";
             default -> "No description found";
         };
     }
