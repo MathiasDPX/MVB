@@ -36,7 +36,8 @@ public final class MAB extends JavaPlugin {
                 new GamemodeCommand(),
                 new WikiCommand(),
                 new PrivacyCommand(this),
-                new ConfigCommand(this)
+                new ConfigCommand(this),
+                new PrivateMessageCommands(this)
         );
 
         /* LISTENERS */
