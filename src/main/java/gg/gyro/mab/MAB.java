@@ -30,11 +30,13 @@ public final class MAB extends JavaPlugin {
         /* COMMANDS */
         handler.getAutoCompleter().registerSuggestion("privacy_scopes", (args, sender, command) -> lists.privacy_scopes);
         handler.getAutoCompleter().registerSuggestion("gamemodes", (args, sender, command) -> lists.gamemodes);
+        handler.getAutoCompleter().registerSuggestion("config", (args, sender, command) -> lists.config_parameters);
 
         handler.register(
                 new GamemodeCommand(),
                 new WikiCommand(),
-                new PrivacyCommand(this)
+                new PrivacyCommand(this),
+                new ConfigCommand(this)
         );
 
         /* LISTENERS */
