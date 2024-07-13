@@ -22,9 +22,8 @@ public class UtilityCommand {
             sender.sendMessage("§cThis feature is disabled.");
             return;
         }
-        if (!(sender instanceof Player)) { return; }
+        if (!(sender instanceof Player player)) { return; }
 
-        Player player = (Player) sender;
         Inventory inv = Bukkit.createInventory(player, type);
         player.openInventory(inv);
     }
@@ -51,10 +50,8 @@ public class UtilityCommand {
 
     @Subcommand("ender_chest")
     public void enderChest(CommandSender sender) {
-        if (!(sender instanceof Player)) { return; }
-        if (plugin.getConfig().getBoolean("utility_block.ender_chest")) {}
-
-        Player player = (Player) sender;
+        if (!(sender instanceof Player player)) { return; }
+        if (plugin.getConfig().getBoolean("utility_block.ender_chest")) { return; }
 
         Inventory ec = player.getEnderChest();
         player.openInventory(ec);

@@ -23,8 +23,7 @@ public class PrivateMessageCommands {
     @Command({"w", "whisper"})
     @Description("Send a private message to a player")
     public void whisper(CommandSender sender, @Named("Target") Player target, @Named("message") String message) {
-        if (!(sender instanceof Player)) { return; }
-        Player player = (Player) sender;
+        if (!(sender instanceof Player player)) { return; }
         if (target == player) {
             player.sendMessage("§cYou can't send a private message to yourself");
             return;
@@ -44,8 +43,7 @@ public class PrivateMessageCommands {
     @Command({"r", "respond"})
     @Description("Respond to your last whisper")
     public void respond(CommandSender sender, @Named("message") String message) {
-        if (!(sender instanceof Player)) { return; }
-        Player player = (Player) sender;
+        if (!(sender instanceof Player player)) { return; }
         Player target = lastMessage.get(sender);
 
         if (target == null) {

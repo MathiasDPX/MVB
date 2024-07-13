@@ -1,7 +1,6 @@
 package gg.gyro.mab.utils;
 
 import gg.gyro.mab.MAB;
-import gg.gyro.mab.utils.Privacy;
 import org.bukkit.entity.Player;
 
 import java.sql.Connection;
