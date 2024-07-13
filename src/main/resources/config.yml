@@ -2,3 +2,6 @@ database:
   jdbc: "jdbc:mysql://db.example.com:3306/databasename"
   user: "username"
   password: "password"
+insomnia:
+  enabled: true
+  chance: 0.1
