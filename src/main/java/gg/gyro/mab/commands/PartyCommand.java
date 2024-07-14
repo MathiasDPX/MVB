@@ -47,6 +47,28 @@ public class PartyCommand implements Listener {
         return null;
     }
 
+    @Subcommand("transfer")
+    @Description("Transfer ownership")
+    public void transfer(CommandSender sender, @Named("NewOwner") Player newOwner) {
+        if (!(sender instanceof Player player)) { return; }
+        Party party = getPlayerParty(newOwner);
+        if (party == null) {
+            player.sendMessage("§cYou are not member of a party!");
+            return;
+        }
+        if (!party.isPlayerOwner(player)) {
+            player.sendMessage("§cYou are not owner of this party!");
+        }
+
+        if (player.equals(newOwner)) {
+            player.sendMessage("§cYou are already owner of this party!");
+            return;
+        }
+
+        party.changeOwner(newOwner);
+        party.broadcast("Ownership has been transfered to §6"+newOwner.getName());
+    }
+
     @Subcommand("create")
     @Description("Create a party")
     public void create(CommandSender sender) {
@@ -107,7 +129,7 @@ public class PartyCommand implements Listener {
         player.sendMessage("§6Your party's members:");
         for (Player member : pParty.getMembers()) {
             if (pParty.isPlayerOwner(member)) {
-                player.sendMessage("§4-§r ★ "+member.getName());
+                player.sendMessage("§4-§r §e★§r "+member.getName());
             } else {
                 player.sendMessage("§4-§r "+member.getName());
             }
