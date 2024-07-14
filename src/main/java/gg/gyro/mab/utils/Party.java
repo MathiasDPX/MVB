@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class Party {
     Player owner;
-    Set<Player> members = new HashSet<Player>();
+    Set<Player> members = new HashSet<>();
 
     public Party(Player owner) {
         this.owner = owner;
@@ -31,7 +31,7 @@ public class Party {
 
     public void sendToAll(Player sender, String message) {
         for (Player p : members) {
-            p.sendMessage("§6#party§r ["+sender.getName()+"]"+message);
+            p.sendMessage("§6#party§r ["+sender.getName()+"] "+message);
         }
     }
 
@@ -51,7 +51,7 @@ public class Party {
 
     public void broadcast(String message) {
         for (Player p : members) {
-            p.sendMessage("§6#party§r: "+message);
+            p.sendMessage("§6#party§r "+message);
         }
     }
 }

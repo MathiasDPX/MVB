@@ -1,9 +1,13 @@
 package gg.gyro.mab.commands;
 
+import gg.gyro.mab.MAB;
 import gg.gyro.mab.utils.Party;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerQuitEvent;
 import revxrsal.commands.annotation.*;
 
 import java.util.HashMap;
@@ -11,9 +15,28 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Command("party")
-public class PartyCommand {
+public class PartyCommand implements Listener {
     Set<Party> parties = new HashSet<>();
     HashMap<Player, Party> invites = new HashMap<>();
+
+    public PartyCommand(MAB plugin) {
+        plugin.getServer().getPluginManager().registerEvents(this, plugin);
+    }
+
+    @EventHandler
+    public void PlayerLeave(PlayerQuitEvent event) {
+        Player player = event.getPlayer();
+        Party pParty = getPlayerParty(player);
+
+        if (pParty == null) { return; }
+
+        pParty.broadcast(player.getName()+" leaved your party!");
+        pParty.removeMember(player);
+
+        if (pParty.getMembers().isEmpty()) {
+            parties.remove(pParty);
+        }
+    }
 
     public Party getPlayerParty(Player player) {
         for (Party party : parties) {
@@ -45,7 +68,7 @@ public class PartyCommand {
         if (!(sender instanceof Player player)) { return; }
         Party pParty = getPlayerParty(player);
         if (pParty == null) {
-            player.sendMessage("§cYou are not a member of a party.");
+            player.sendMessage("§cYou are not member of a party.");
             return;
         }
 
@@ -65,8 +88,30 @@ public class PartyCommand {
         }
 
         invites.put(target, pParty);
+        player.sendMessage("§a"+player.getName()+" has been invited to your party");
         target.sendMessage("§6"+player.getName()+"§r invited you to a party");
         target.sendMessage("Type §e/party accept§r to accept");
+    }
+
+    @Subcommand("members")
+    @Description("Show every member of your party")
+    public void members(CommandSender sender) {
+        if (!(sender instanceof Player player)) { return; }
+        Party pParty = getPlayerParty(player);
+
+        if (pParty == null) {
+            player.sendMessage("§cYou are not member of a party.");
+            return;
+        }
+
+        player.sendMessage("§6Your party's members:");
+        for (Player member : pParty.getMembers()) {
+            if (pParty.isPlayerOwner(member)) {
+                player.sendMessage("§4-§r ★ "+member.getName());
+            } else {
+                player.sendMessage("§4-§r "+member.getName());
+            }
+        }
     }
 
     @Subcommand("accept")
@@ -110,7 +155,7 @@ public class PartyCommand {
     public void chat(CommandSender sender, @Named("message") String message) {
         if (!(sender instanceof Player player)) { return;}
         if (getPlayerParty(player) == null) {
-            player.sendMessage("§cYou are not a member of a party.");
+            player.sendMessage("§cYou are not member of a party.");
             return;
         }
 
@@ -124,7 +169,7 @@ public class PartyCommand {
         if (!(sender instanceof Player player)) { return; }
         Party pParty = getPlayerParty(player);
         if (pParty == null) {
-            player.sendMessage("§cYou are not a member of a party.");
+            player.sendMessage("§cYou are not member of a party.");
             return;
         }
 
@@ -138,6 +183,8 @@ public class PartyCommand {
         if (pParty.getMembers().isEmpty()) {
             parties.remove(pParty);
         }
+        
+        player.sendMessage("§aYou have leaved your party");
     }
 
     @Subcommand("dissolve")
@@ -146,7 +193,7 @@ public class PartyCommand {
         if (!(sender instanceof Player player)) { return; }
         Party pParty = getPlayerParty(player);
         if (pParty == null) {
-            player.sendMessage("§cYou are not a member of a party.");
+            player.sendMessage("§cYou are not member of a party.");
             return;
         }
 
@@ -156,9 +203,9 @@ public class PartyCommand {
         }
 
         if (reason == null) {
-            pParty.broadcast("This party was dissolved by " + player.getName());
+            pParty.broadcast("This party has been dissolved by " + player.getName());
         } else {
-            pParty.broadcast("This party was dissolved by " + player.getName() + "\nReason: "+reason);
+            pParty.broadcast("This party has been dissolved by " + player.getName() + "\nReason: "+reason);
         }
         pParty.dissolve();
     }
