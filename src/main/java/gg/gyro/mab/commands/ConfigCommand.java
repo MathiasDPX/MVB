@@ -22,7 +22,7 @@ public class ConfigCommand {
     @CommandPermission("mab.config.reload")
     public void reload(CommandSender sender) {
         this.plugin.reloadConfig();
-        sender.sendMessage("Config reloaded!");
+        sender.sendMessage(ChatColor.GREEN+"Config reloaded!");
     }
 
     @Subcommand("get")
