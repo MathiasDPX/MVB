@@ -28,7 +28,7 @@ public final class MAB extends JavaPlugin {
         db.initialize();
 
         for (String block : lists.utility_blocks) {
-            lists.config_parameters.add("utility"+block);
+            lists.config_parameters.add("utility."+block);
         }
 
         /* COMMANDS */
