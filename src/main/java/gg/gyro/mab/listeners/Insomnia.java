@@ -38,7 +38,7 @@ public class Insomnia implements Listener {
     public void onTimeSkip(TimeSkipEvent event) {
         if (event.getSkipReason() != TimeSkipEvent.SkipReason.NIGHT_SKIP) { return; }
         if (playersWhoSlept.isEmpty()) { return; }
-        if (!(this.plugin.getConfig().getBoolean("insomnia.enabled"))) { return; } // Verify if insomnia is enabled
+        if (!(this.plugin.getConfig().getBoolean("features.insomnia"))) { return; } // Verify if insomnia is enabled
 
         for (Player player : playersWhoSlept) {
             if (new Random().nextDouble() > this.plugin.getConfig().getDouble("insomnia.chance")) { return; }
