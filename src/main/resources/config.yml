@@ -2,9 +2,18 @@ database:
   jdbc: "jdbc:mysql://db.example.com:3306/databasename"
   user: "username"
   password: "password"
+
+features:
+  insomnia: true
+  joinleave: true
+
 insomnia:
-  enabled: true
   chance: 0.1
+
+joinleave:
+  join: "[§a+§r] $player"
+  leave: "[§c-§r] $player"
+
 utility:
   anvil: true
   brewing_stand: true
