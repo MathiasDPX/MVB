@@ -50,6 +50,7 @@ public final class MAB extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PingPlayer(this), this);
         getServer().getPluginManager().registerEvents(new Insomnia(this), this);
         getServer().getPluginManager().registerEvents(new JoinLeaveMessage(this), this);
+        getServer().getPluginManager().registerEvents(new DurabilityPing(this), this);
 
         System.out.println("Plugin enabled");
     }

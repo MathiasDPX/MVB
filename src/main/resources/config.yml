@@ -5,7 +5,8 @@ database:
 
 features:
   insomnia: true
-  joinleave: true
+  joinleave: true # Change default join/leave message
+  durability_ping: true # Receive a message when a tool reach a certain durability
 
 insomnia:
   chance: 0.1
@@ -14,7 +15,12 @@ joinleave:
   join: "[§a+§r] $player"
   leave: "[§c-§r] $player"
 
-utility:
+durability_ping:
+  trigger: 10 # Any numbers between 0 and 1 will be interpreted as percentage
+  warning_message: "§cYour item will break soon!"
+  warning_sound: "BLOCK_ANVIL_LAND"
+
+utility: # Access to /utility [block]
   anvil: true
   brewing_stand: true
   cartography_table: true
