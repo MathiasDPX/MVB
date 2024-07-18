@@ -11,6 +11,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Set;
 
@@ -44,7 +45,8 @@ public class Insomnia implements Listener {
             if (new Random().nextDouble() > this.plugin.getConfig().getDouble("insomnia.chance")) { return; }
 
             System.out.println("Giving insomnia to "+player.getName());
-            player.sendMessage("You've did an insomnia!");
+            String message = Objects.requireNonNull(this.plugin.getConfig().getString("insomnia.message"), "You've did an insomnia");
+            player.sendMessage(message);
             player.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, 200, 1)); // Slowness II
             player.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 200, 0)); // Weakness
             player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS , 200, 0)); // Blindness

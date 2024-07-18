@@ -11,6 +11,7 @@ features:
 
 insomnia:
   chance: 0.1
+  message: "You've did an insomnia"
 
 food_poisoning:
   chance: 0.25
