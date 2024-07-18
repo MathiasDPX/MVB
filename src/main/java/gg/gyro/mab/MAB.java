@@ -66,7 +66,7 @@ public final class MAB extends JavaPlugin {
         try {
             return db.getConnection();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("§cError while connecting to the database!!!");
         }
         return null;
     }
