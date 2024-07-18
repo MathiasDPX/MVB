@@ -7,9 +7,15 @@ features:
   insomnia: true
   joinleave: true # Change default join/leave message
   durability_ping: true # Receive a message when a tool reach a certain durability
+  food_poisoning: true # Give Nausea when you eat something raw
 
 insomnia:
   chance: 0.1
+
+food_poisoning:
+  chance: 0.25
+  duration: 10 # Nausea duration in seconds
+  amplifier: 1 # Amplifier for Nausea
 
 joinleave:
   join: "[§a+§r] $player"
