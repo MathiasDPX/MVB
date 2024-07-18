@@ -74,8 +74,4 @@ public final class MAB extends JavaPlugin {
     public Lists getLists() {
         return this.lists;
     }
-
-    public BukkitCommandHandler getCommandHandler() {
-        return this.handler;
-    }
 }
