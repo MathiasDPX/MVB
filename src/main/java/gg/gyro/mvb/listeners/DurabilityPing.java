@@ -28,8 +28,6 @@ public class DurabilityPing implements Listener {
         if (!(this.plugin.getConfig().getBoolean("features.durability_ping"))) { return; }
         double trigger = this.plugin.getConfig().getDouble("durability_ping.trigger");
 
-        p.sendMessage(String.valueOf(trigger));
-        p.sendMessage(String.valueOf(durability));
         if ((trigger > 0) && (trigger < 1)) {
             trigger = item.getType().getMaxDurability() * trigger;
             trigger = Math.round(trigger);
