@@ -2,26 +2,45 @@ package gg.gyro.mvb.commands;
 
 import gg.gyro.mvb.MVB;
 import gg.gyro.mvb.utils.Party;
+import gg.gyro.mvb.utils.Privacy;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 import revxrsal.commands.annotation.*;
+import revxrsal.commands.annotation.Optional;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Command("party")
 @Description("Party with others players")
 public class PartyCommand implements Listener {
     Set<Party> parties = new HashSet<>();
     HashMap<Player, Party> invites = new HashMap<>();
+    Privacy privacy;
+    MVB plugin;
 
     public PartyCommand(MVB plugin) {
+        this.plugin = plugin;
+        privacy = new Privacy(plugin);
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
+    }
+
+    private String prettyWorldName(World world){
+        return switch (world.getName()) {
+            case "world":
+                yield "§aOverworld";
+            case "world_nether":
+                yield "§4Nether";
+            case "world_the_end":
+                yield "§dEnd";
+            default:
+                yield world.getName();
+        };
     }
 
     @EventHandler
@@ -97,6 +116,11 @@ public class PartyCommand implements Listener {
 
         if (!pParty.isPlayerOwner(player)) {
             player.sendMessage("§cYou are not owner of the party.");
+            return;
+        }
+
+        if (!privacy.getScope(target, "pinvites")) {
+            player.sendMessage("§c"+target.getName()+" does not accept invitations!");
             return;
         }
 
@@ -185,6 +209,44 @@ public class PartyCommand implements Listener {
         Party pParty = getPlayerParty(player);
         pParty.sendToAll(player, message);
     }
+
+    @Command("pc")
+    @SecretCommand()
+    @Description("Same as /party chat")
+    public void chat_alias(CommandSender sender, @Named("message") String message){
+        chat(sender, message);
+    }
+
+    @Subcommand("coords")
+    @Description("Get party's members coordinates")
+    public void coords(CommandSender sender) {
+        if (!(sender instanceof Player player)) { return; }
+        Party pParty = getPlayerParty(player);
+        if (pParty == null) {
+            player.sendMessage("§cYou are not member of a party.");
+            return;
+        }
+
+        HashMap<String, List<Player>> dimensions = new HashMap<>();
+
+        for (Player member : pParty.getMembers()) {
+            if (!privacy.getScope(member, "party_coords")) { continue; }
+
+            String worldName = prettyWorldName(member.getWorld());
+            dimensions.computeIfAbsent(worldName, k -> new ArrayList<>()).add(member);
+        }
+
+        for (Map.Entry<String, List<Player>> entry : dimensions.entrySet()) {
+            String worldName = entry.getKey();
+            List<Player> players = entry.getValue();
+            player.sendMessage("§a" + worldName + ":");
+            for (Player p : players) {
+                Location loc = p.getLocation();
+                player.sendMessage(" §6-§r " + p.getName()+" ("+loc.getBlockX()+", "+loc.getBlockY()+", "+loc.getBlockZ()+")");
+            }
+        }
+    }
+
 
     @Subcommand("leave")
     @Description("Leave a party")

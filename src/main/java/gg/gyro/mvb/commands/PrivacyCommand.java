@@ -30,6 +30,7 @@ public class PrivacyCommand {
             case "pm" -> "Allow people to send you private messages";
             case "response" -> "Allow people to respond to your private messages";
             case "pinvites" -> "Allow people to invite you to their party";
+            case "party_coords" -> "Allow party members to see your dimension and coordinates";
             default -> "No description found";
         };
     }
