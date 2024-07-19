@@ -236,6 +236,11 @@ public class PartyCommand implements Listener {
             dimensions.computeIfAbsent(worldName, k -> new ArrayList<>()).add(member);
         }
 
+        if (dimensions.isEmpty()) {
+            player.sendMessage("§cNone of your teammates share their coordinates");
+            return;
+        }
+
         for (Map.Entry<String, List<Player>> entry : dimensions.entrySet()) {
             String worldName = entry.getKey();
             List<Player> players = entry.getValue();
