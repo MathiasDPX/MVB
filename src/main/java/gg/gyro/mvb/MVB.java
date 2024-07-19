@@ -6,6 +6,7 @@ import gg.gyro.mvb.listeners.*;
 import gg.gyro.mvb.utils.Lists;
 import gg.gyro.mvb.utils.Database;
 
+import gg.gyro.mvb.utils.Metrics;
 import revxrsal.commands.bukkit.BukkitCommandHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -15,6 +16,7 @@ import java.sql.SQLException;
 public final class MVB extends JavaPlugin {
     Database db = new Database(this);
     Lists lists = new Lists();
+    Metrics metrics = new Metrics(this, 22708);
     BukkitCommandHandler handler;
 
     @Override
@@ -74,5 +76,9 @@ public final class MVB extends JavaPlugin {
 
     public Lists getLists() {
         return this.lists;
+    }
+
+    public Metrics getMetrics() {
+        return this.metrics;
     }
 }
