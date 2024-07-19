@@ -1,6 +1,6 @@
-package gg.gyro.mab.commands;
+package gg.gyro.mvb.commands;
 
-import gg.gyro.mab.MAB;
+import gg.gyro.mvb.MVB;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -15,23 +15,23 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 @Command("config")
-@CommandPermission("mab.config")
+@CommandPermission("mvb.config")
 public class ConfigCommand {
-    MAB plugin;
+    MVB plugin;
 
-    public ConfigCommand(MAB plugin) {
+    public ConfigCommand(MVB plugin) {
         this.plugin = plugin;
     }
 
     @Subcommand("reload")
-    @CommandPermission("mab.config.reload")
+    @CommandPermission("mvb.config.reload")
     public void reload(CommandSender sender) {
         this.plugin.reloadConfig();
         sender.sendMessage(ChatColor.GREEN+"Config reloaded!");
     }
 
     @Subcommand("get")
-    @CommandPermission("mab.config.read")
+    @CommandPermission("mvb.config.read")
     @AutoComplete("@config")
     public void get(CommandSender sender, @Named("parameter") String parameter) {
         if (!(this.plugin.getLists().config_parameters.contains(parameter))) {
@@ -43,7 +43,7 @@ public class ConfigCommand {
     }
 
     @Subcommand("defaultfor")
-    @CommandPermission("mab.config.default")
+    @CommandPermission("mvb.config.default")
     @AutoComplete("@config")
     public void defaultfor(CommandSender sender, @Named("parameter") String parameter) {
         if (!(this.plugin.getLists().config_parameters.contains(parameter))) {

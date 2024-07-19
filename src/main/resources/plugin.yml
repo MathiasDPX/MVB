@@ -1,7 +1,7 @@
-name: MAB
+name: MVB
 version: '${version}'
 api-version: '1.20'
-main: gg.gyro.mab.MAB
+main: gg.gyro.mvb.MVB
 authors: [Gyro3630]
-prefix: "MAB"
-description: Make Anything Better
+prefix: "MVB"
+description: Make Vanilla Better

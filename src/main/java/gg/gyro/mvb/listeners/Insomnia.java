@@ -1,6 +1,6 @@
-package gg.gyro.mab.listeners;
+package gg.gyro.mvb.listeners;
 
-import gg.gyro.mab.MAB;
+import gg.gyro.mvb.MVB;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,9 +17,9 @@ import java.util.Set;
 
 public class Insomnia implements Listener {
     public Set<Player> playersWhoSlept = new HashSet<>();
-    MAB plugin;
+    MVB plugin;
 
-    public Insomnia(MAB plugin) {
+    public Insomnia(MVB plugin) {
         this.plugin = plugin;
     }
 

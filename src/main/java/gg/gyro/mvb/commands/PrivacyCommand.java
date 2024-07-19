@@ -1,8 +1,8 @@
-package gg.gyro.mab.commands;
+package gg.gyro.mvb.commands;
 
-import gg.gyro.mab.MAB;
-import gg.gyro.mab.utils.Lists;
-import gg.gyro.mab.utils.Privacy;
+import gg.gyro.mvb.MVB;
+import gg.gyro.mvb.utils.Lists;
+import gg.gyro.mvb.utils.Privacy;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -14,11 +14,11 @@ import java.util.Objects;
 @Command("privacy")
 @Description("Manage privacy settings")
 public class PrivacyCommand {
-    MAB plugin;
+    MVB plugin;
     Privacy privacy;
     Lists lists;
 
-    public PrivacyCommand(MAB plugin) {
+    public PrivacyCommand(MVB plugin) {
         this.plugin = plugin;
         this.privacy = new Privacy(plugin);
         this.lists = plugin.getLists();

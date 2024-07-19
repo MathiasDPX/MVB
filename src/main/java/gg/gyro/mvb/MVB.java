@@ -1,10 +1,10 @@
-package gg.gyro.mab;
+package gg.gyro.mvb;
 
-import gg.gyro.mab.commands.*;
-import gg.gyro.mab.listeners.*;
+import gg.gyro.mvb.commands.*;
+import gg.gyro.mvb.listeners.*;
 
-import gg.gyro.mab.utils.Lists;
-import gg.gyro.mab.utils.Database;
+import gg.gyro.mvb.utils.Lists;
+import gg.gyro.mvb.utils.Database;
 
 import revxrsal.commands.bukkit.BukkitCommandHandler;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -12,7 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public final class MAB extends JavaPlugin {
+public final class MVB extends JavaPlugin {
     Database db = new Database(this);
     Lists lists = new Lists();
     BukkitCommandHandler handler;

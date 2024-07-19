@@ -1,7 +1,7 @@
-package gg.gyro.mab.commands;
+package gg.gyro.mvb.commands;
 
-import gg.gyro.mab.MAB;
-import gg.gyro.mab.utils.Party;
+import gg.gyro.mvb.MVB;
+import gg.gyro.mvb.utils.Party;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -19,7 +19,7 @@ public class PartyCommand implements Listener {
     Set<Party> parties = new HashSet<>();
     HashMap<Player, Party> invites = new HashMap<>();
 
-    public PartyCommand(MAB plugin) {
+    public PartyCommand(MVB plugin) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 

@@ -1,6 +1,6 @@
-package gg.gyro.mab.utils;
+package gg.gyro.mvb.utils;
 
-import gg.gyro.mab.MAB;
+import gg.gyro.mvb.MVB;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,10 +8,10 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 public class Database {
-    MAB plugin;
+    MVB plugin;
     Connection connection;
 
-    public Database(MAB plugin) {
+    public Database(MVB plugin) {
         this.plugin = plugin;
     }
 

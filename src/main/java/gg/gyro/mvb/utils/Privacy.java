@@ -1,6 +1,6 @@
-package gg.gyro.mab.utils;
+package gg.gyro.mvb.utils;
 
-import gg.gyro.mab.MAB;
+import gg.gyro.mvb.MVB;
 import org.bukkit.entity.Player;
 
 import java.sql.Connection;
@@ -10,10 +10,10 @@ import java.sql.SQLException;
 import java.util.HashMap;
 
 public class Privacy {
-    MAB plugin;
+    MVB plugin;
     Connection connection;
 
-    public Privacy(MAB plugin) {
+    public Privacy(MVB plugin) {
         this.plugin = plugin;
         connection = plugin.getConnection();
     }

@@ -1,4 +1,4 @@
-package gg.gyro.mab.utils;
+package gg.gyro.mvb.utils;
 
 import org.bukkit.entity.Player;
 

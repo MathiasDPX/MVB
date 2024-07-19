@@ -1,7 +1,7 @@
-package gg.gyro.mab.listeners;
+package gg.gyro.mvb.listeners;
 
-import gg.gyro.mab.MAB;
-import gg.gyro.mab.utils.Lists;
+import gg.gyro.mvb.MVB;
+import gg.gyro.mvb.utils.Lists;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,9 +13,9 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.Random;
 
 public class FoodPoisoning implements Listener {
-    MAB plugin;
+    MVB plugin;
 
-    public FoodPoisoning(MAB plugin) {
+    public FoodPoisoning(MVB plugin) {
         this.plugin = plugin;
     }
 

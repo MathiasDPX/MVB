@@ -1,6 +1,6 @@
-package gg.gyro.mab.listeners;
+package gg.gyro.mvb.listeners;
 
-import gg.gyro.mab.MAB;
+import gg.gyro.mvb.MVB;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Sound;
@@ -13,8 +13,8 @@ import org.bukkit.inventory.ItemStack;
 import java.util.Objects;
 
 public class DurabilityPing implements Listener {
-    MAB plugin;
-    public DurabilityPing(MAB plugin) {
+    MVB plugin;
+    public DurabilityPing(MVB plugin) {
         this.plugin = plugin;
     }
 

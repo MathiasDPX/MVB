@@ -1,7 +1,7 @@
-package gg.gyro.mab.commands;
+package gg.gyro.mvb.commands;
 
-import gg.gyro.mab.MAB;
-import gg.gyro.mab.utils.Privacy;
+import gg.gyro.mvb.MVB;
+import gg.gyro.mvb.utils.Privacy;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -10,12 +10,12 @@ import revxrsal.commands.annotation.*;
 import java.util.HashMap;
 
 public class PrivateMessageCommands {
-    MAB plugin;
+    MVB plugin;
     Privacy privacy;
 
     HashMap<Player, Player> lastMessage = new HashMap<>();
 
-    public PrivateMessageCommands(MAB plugin) {
+    public PrivateMessageCommands(MVB plugin) {
         this.plugin = plugin;
         this.privacy = new Privacy(plugin);
     }

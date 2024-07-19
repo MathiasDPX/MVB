@@ -1,4 +1,4 @@
-package gg.gyro.mab.commands;
+package gg.gyro.mvb.commands;
 
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;

@@ -1,15 +1,15 @@
-package gg.gyro.mab.listeners;
+package gg.gyro.mvb.listeners;
 
-import gg.gyro.mab.MAB;
+import gg.gyro.mvb.MVB;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class JoinLeaveMessage implements Listener {
-    MAB plugin;
+    MVB plugin;
 
-    public JoinLeaveMessage(MAB plugin) {
+    public JoinLeaveMessage(MVB plugin) {
         this.plugin = plugin;
 
         if (!(this.plugin.getConfig().getBoolean("features.joinleave"))) {

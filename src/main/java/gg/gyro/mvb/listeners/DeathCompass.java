@@ -1,6 +1,6 @@
-package gg.gyro.mab.listeners;
+package gg.gyro.mvb.listeners;
 
-import gg.gyro.mab.MAB;
+import gg.gyro.mvb.MVB;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -16,11 +16,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class DeathCompass implements Listener {
-    MAB plugin;
+    MVB plugin;
 
     HashMap<Player, Location> deathLocations = new HashMap<>();
 
-    public DeathCompass(MAB plugin) {
+    public DeathCompass(MVB plugin) {
         this.plugin = plugin;
     }
 

@@ -1,6 +1,6 @@
-package gg.gyro.mab.commands;
+package gg.gyro.mvb.commands;
 
-import gg.gyro.mab.MAB;
+import gg.gyro.mvb.MVB;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -11,9 +11,9 @@ import revxrsal.commands.annotation.Subcommand;
 
 @Command("utility")
 public class UtilityCommand {
-    private final MAB plugin;
+    private final MVB plugin;
 
-    public UtilityCommand(MAB plugin) {
+    public UtilityCommand(MVB plugin) {
         this.plugin = plugin;
     }
 

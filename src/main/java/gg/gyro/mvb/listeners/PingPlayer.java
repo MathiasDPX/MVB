@@ -1,7 +1,7 @@
-package gg.gyro.mab.listeners;
+package gg.gyro.mvb.listeners;
 
-import gg.gyro.mab.MAB;
-import gg.gyro.mab.utils.Privacy;
+import gg.gyro.mvb.MVB;
+import gg.gyro.mvb.utils.Privacy;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.event.EventHandler;
@@ -9,10 +9,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 public class PingPlayer implements Listener {
-    MAB plugin;
+    MVB plugin;
     Privacy privacy;
 
-    public PingPlayer(MAB plugin) {
+    public PingPlayer(MVB plugin) {
         privacy = new Privacy(plugin);
         this.plugin = plugin;
     }
