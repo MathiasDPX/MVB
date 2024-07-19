@@ -52,6 +52,7 @@ public final class MAB extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new JoinLeaveMessage(this), this);
         getServer().getPluginManager().registerEvents(new DurabilityPing(this), this);
         getServer().getPluginManager().registerEvents(new FoodPoisoning(this), this);
+        getServer().getPluginManager().registerEvents(new DeathCompass(this), this);
 
         System.out.println("Plugin enabled");
     }

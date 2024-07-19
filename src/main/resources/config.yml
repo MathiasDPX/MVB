@@ -9,6 +9,10 @@ features:
   durability_ping: true # Receive a message when a tool reach a certain durability
   food_poisoning: true # Give Nausea when you eat something raw
 
+death_compass:
+  compass: true # Give "Death Compass" pointing to death pos
+  message: "You died in $x $y $z" # Say something to player at death
+
 insomnia:
   chance: 0.1
   message: "You've did an insomnia"
