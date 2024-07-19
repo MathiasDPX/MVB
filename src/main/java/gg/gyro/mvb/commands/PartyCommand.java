@@ -244,7 +244,7 @@ public class PartyCommand implements Listener {
         for (Map.Entry<String, List<Player>> entry : dimensions.entrySet()) {
             String worldName = entry.getKey();
             List<Player> players = entry.getValue();
-            player.sendMessage("§a" + worldName + ":");
+            player.sendMessage("§a" + worldName + " ("+players.size()+"):");
             for (Player p : players) {
                 Location loc = p.getLocation();
                 player.sendMessage(" §6-§r " + p.getName()+" ("+loc.getBlockX()+", "+loc.getBlockY()+", "+loc.getBlockZ()+")");
