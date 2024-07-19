@@ -1,6 +1,7 @@
 package gg.gyro.mvb.commands;
 
 import gg.gyro.mvb.MVB;
+import gg.gyro.mvb.utils.Privacy;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Sound;
@@ -18,11 +19,13 @@ import java.util.Map;
 
 public class TeleportCommand {
     MVB plugin;
+    Privacy privacy;
 
     HashMap<Player, Player> tpa_requests = new HashMap<>(); // Tp first to second
 
     public TeleportCommand(MVB plugin) {
         this.plugin = plugin;
+        this.privacy = new Privacy(plugin);
     }
 
     public List<Player> getInvitesTo(Player player) {
@@ -42,7 +45,11 @@ public class TeleportCommand {
             player.sendMessage("§cYou can't teleport to yourself!");
             return;
         }
-        // TODO: Add "tpa_request" scope verification
+
+        if (!privacy.getScope(target, "tpa_requests")) {
+            player.sendMessage("§c"+target.getName()+" don't accept tpa requests");
+            return;
+        }
 
         if (tpa_requests.containsKey(player)) {
             player.sendMessage("You already have a pending teleportation request");
