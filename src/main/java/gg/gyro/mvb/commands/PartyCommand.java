@@ -15,6 +15,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Command("party")
+@Description("Party with others players")
 public class PartyCommand implements Listener {
     Set<Party> parties = new HashSet<>();
     HashMap<Player, Party> invites = new HashMap<>();

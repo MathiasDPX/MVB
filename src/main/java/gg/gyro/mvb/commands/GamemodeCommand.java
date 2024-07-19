@@ -13,6 +13,7 @@ public class GamemodeCommand {
     @Command({"gamemode", "gm"})
     @AutoComplete("@gamemodes")
     @CommandPermission("gyro.commands.gamemode")
+    @Description("Change gamemode")
     public void onCommand(CommandActor actor, @Named("gamemode") String gamemodes, @Optional @Default("me") Player player) {
         String mode = gamemodes.toLowerCase();
 

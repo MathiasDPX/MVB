@@ -7,10 +7,12 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import revxrsal.commands.annotation.Command;
+import revxrsal.commands.annotation.Description;
 
 public class WikiCommand {
 
     @Command({"mcwiki", "wiki"})
+    @Description("Open wiki link for item")
     public void onCommand(Player player) {
         if (player.getInventory().getItemInMainHand().getItemMeta() != null) {
             ItemStack heldItem = player.getInventory().getItemInMainHand();

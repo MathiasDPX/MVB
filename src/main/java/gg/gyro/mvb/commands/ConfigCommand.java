@@ -5,10 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import revxrsal.commands.annotation.AutoComplete;
-import revxrsal.commands.annotation.Command;
-import revxrsal.commands.annotation.Named;
-import revxrsal.commands.annotation.Subcommand;
+import revxrsal.commands.annotation.*;
 import revxrsal.commands.bukkit.annotation.CommandPermission;
 
 import java.io.InputStream;
@@ -16,6 +13,7 @@ import java.io.InputStreamReader;
 
 @Command("config")
 @CommandPermission("mvb.config")
+@Description("Read plugin configuration")
 public class ConfigCommand {
     MVB plugin;
 
@@ -25,6 +23,7 @@ public class ConfigCommand {
 
     @Subcommand("reload")
     @CommandPermission("mvb.config.reload")
+    @Description("Reload config")
     public void reload(CommandSender sender) {
         this.plugin.reloadConfig();
         sender.sendMessage(ChatColor.GREEN+"Config reloaded!");
@@ -33,6 +32,7 @@ public class ConfigCommand {
     @Subcommand("get")
     @CommandPermission("mvb.config.read")
     @AutoComplete("@config")
+    @Description("Get configuration")
     public void get(CommandSender sender, @Named("parameter") String parameter) {
         if (!(this.plugin.getLists().config_parameters.contains(parameter))) {
             sender.sendMessage(ChatColor.DARK_RED+"Invalid parameter!");
@@ -44,6 +44,7 @@ public class ConfigCommand {
 
     @Subcommand("defaultfor")
     @CommandPermission("mvb.config.default")
+    @Description("Get default configuration")
     @AutoComplete("@config")
     public void defaultfor(CommandSender sender, @Named("parameter") String parameter) {
         if (!(this.plugin.getLists().config_parameters.contains(parameter))) {
