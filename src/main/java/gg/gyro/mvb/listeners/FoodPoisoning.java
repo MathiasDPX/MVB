@@ -29,7 +29,6 @@ public class FoodPoisoning implements Listener {
 
         if (Lists.isRaw(namespace)) {
             if (new Random().nextDouble() <= plugin.getConfig().getDouble("food_poisoning.chance")) {
-                player.sendMessage("beurk!");
                 player.addPotionEffect(new PotionEffect(
                         PotionEffectType.NAUSEA,
                         plugin.getConfig().getInt("food_poisoning.duration")*20,
