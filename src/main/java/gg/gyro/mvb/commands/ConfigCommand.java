@@ -22,7 +22,6 @@ public class ConfigCommand {
     }
 
     @Subcommand("reload")
-    @CommandPermission("mvb.config.reload")
     @Description("Reload config")
     public void reload(CommandSender sender) {
         this.plugin.reloadConfig();
