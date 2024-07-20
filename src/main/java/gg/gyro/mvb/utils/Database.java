@@ -29,7 +29,7 @@ public class Database {
                     this.plugin.getConfig().getString("database.user"),
                     this.plugin.getConfig().getString("database.password"));
         } catch (SQLException | ClassNotFoundException e) {
-            plugin.getLogger().severe("Error while connecting connection to Database");
+            plugin.getLogger().severe("Error while connecting to your Database");
             plugin.getServer().getPluginManager().disablePlugin(plugin);
         }
     }
