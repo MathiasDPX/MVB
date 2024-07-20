@@ -3,6 +3,7 @@ package gg.gyro.mvb.listeners;
 import gg.gyro.mvb.MVB;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -50,11 +51,12 @@ public class DeathCompass implements Listener {
         int deathY = deathLocation.getBlockY();
         int deathZ = deathLocation.getBlockZ();
 
-        ItemStack compass = new ItemStack(Material.COMPASS, 1);
+        ItemStack compass = new ItemStack(Material.RECOVERY_COMPASS, 1);
         ItemMeta itemMeta = compass.getItemMeta();
         assert itemMeta != null;
 
         itemMeta.setItemName("Death Compass");
+        itemMeta.addEnchant(Enchantment.BINDING_CURSE, 1, false);
         itemMeta.setLore(List.of(
                 "Corpse of "+p.getName(),
                 "X: "+deathX,
@@ -64,9 +66,6 @@ public class DeathCompass implements Listener {
         ));
 
         compass.setItemMeta(itemMeta);
-
-        p.setCompassTarget(deathLocation);
         p.getInventory().addItem(compass);
-        // TODO: Fix compass
     }
 }
