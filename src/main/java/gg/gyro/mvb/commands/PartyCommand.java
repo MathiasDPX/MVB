@@ -3,6 +3,8 @@ package gg.gyro.mvb.commands;
 import gg.gyro.mvb.MVB;
 import gg.gyro.mvb.utils.Party;
 import gg.gyro.mvb.utils.Privacy;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -104,6 +106,37 @@ public class PartyCommand implements Listener {
         player.sendMessage(ChatColor.GREEN+"You have created a party!");
     }
 
+    @Subcommand("kick")
+    @Description("Kick someone of your party")
+    public void kick(CommandSender sender, @Named("target") Player target, @Optional String reason){
+        if (!(sender instanceof Player player)) { return; }
+        Party pParty = getPlayerParty(player);
+        Party tParty = getPlayerParty(player);
+
+        if (pParty == null) {
+            player.sendMessage("§cYou are not member of a party.");
+            return;
+        }
+
+        if (pParty != tParty) {
+            player.sendMessage("§cYou are not in the same party as "+target.getName());
+            return;
+        }
+
+        if (!pParty.isPlayerOwner(player)) {
+            player.sendMessage("§cYou are not owner of the party!");
+            return;
+        }
+
+        pParty.removeMember(target);
+        target.sendMessage("You have been kicked of the party!");
+        if (reason != null) {
+            reason = "\nReason: "+reason;
+        }
+
+        pParty.broadcast(target.getName()+" has been kicked of your party"+reason);
+    }
+
     @Subcommand("invite")
     @Description("Invite someone to your party")
     public void invite(CommandSender sender, @Named("target") Player target) {
@@ -135,9 +168,12 @@ public class PartyCommand implements Listener {
         }
 
         invites.put(target, pParty);
-        player.sendMessage("§a"+player.getName()+" has been invited to your party");
+        player.sendMessage("§a"+target.getName()+" has been invited to your party");
         target.sendMessage("§6"+player.getName()+"§r invited you to a party");
-        target.sendMessage("Type §e/party accept§r to accept");
+
+        TextComponent acceptButton = new TextComponent("Click to accept");
+        acceptButton.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/party accept"));
+        target.spigot().sendMessage(acceptButton);
     }
 
     @Subcommand("members")
@@ -177,8 +213,8 @@ public class PartyCommand implements Listener {
         }
 
         Party newParty = invites.get(player);
-        newParty.broadcast(player.getName()+" has joined your party!");
         newParty.addMember(player);
+        newParty.broadcast(player.getName()+" has joined your party!");
         invites.remove(player);
     }
 
