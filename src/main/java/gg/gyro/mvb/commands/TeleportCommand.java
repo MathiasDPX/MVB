@@ -57,7 +57,7 @@ public class TeleportCommand {
         }
         tpa_requests.put(player, target);
 
-        TextComponent message = new TextComponent(sender.getName() + " sent you a teleportation request.\n§b");
+        TextComponent message = new TextComponent(sender.getName() + " sent you a teleportation request.\n§l");
         TextComponent acceptButton = new TextComponent("§a[[ACCEPT]]");
         acceptButton.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tpaccept "+player.getName()));
 
