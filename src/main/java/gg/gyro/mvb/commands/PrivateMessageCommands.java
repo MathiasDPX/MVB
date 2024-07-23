@@ -63,5 +63,6 @@ public class PrivateMessageCommands {
 
         player.sendMessage("§4[§rto "+target.getName()+"§4]§r §6->§r "+message);
         target.sendMessage("§4[§rfrom "+sender.getName()+"§4]§r §6->§r "+message);
+        lastMessage.put(target, player);
     }
 }
