@@ -45,8 +45,7 @@ public final class MVB extends JavaPlugin {
                 new ConfigCommand(this),
                 new PrivateMessageCommands(this),
                 new UtilityCommand(this),
-                new PartyCommand(this),
-                new TeleportCommand(this)
+                new PartyCommand(this)
         );
 
         /* LISTENERS */
